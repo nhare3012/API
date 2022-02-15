@@ -42,8 +42,8 @@ def test_booklist_post():
 def test_book_get():
     repo = MagicMock(spec=Repository)
     repo.book_get_by_id.return_value = book2
-    book = Book(repo).get(1)
-    assert int(book['bookId']) == 1
+    book = Book(repo).get('1')
+    assert int(book['bookId']) == 2
     assert book['title'] == 'test The Lord Of The Rings'
 
 def test_reviewlist_book_get():
