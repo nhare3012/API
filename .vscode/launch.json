@@ -17,7 +17,8 @@
                 "DATABASE": "bookreactions", 
                 "DB_PORT": "5432",
                 "USER": "postgres",
-                "PASSWORD": "tawanda"
+                "PASSWORD": "tawanda",
+                "BASE_URL": "/api/bookreactions"
             },
             "args": [
                 "run",

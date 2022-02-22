@@ -3,19 +3,20 @@ import psycopg2
 import os
 
 
-book1 = BookModel('The Hobbit', 'J R R Tolkien', 1)
-book2 = BookModel('The Lord Of The Rings', 'J R R Tolkien', 2) 
-review1 = ReviewModel('a timeless classic', 1)
-review2 = ReviewModel('I hated it', 1)
-review3 = ReviewModel('an even more timeless classic', 2)
-review4 = ReviewModel('I hated it even more', 2)
+# book1 = BookModel('The Hobbit', 'J R R Tolkien', 1)
+# book2 = BookModel('The Lord Of The Rings', 'J R R Tolkien', 2) 
+# review1 = ReviewModel('a timeless classic', 1)
+# review2 = ReviewModel('I hated it', 1)
+# review3 = ReviewModel('an even more timeless classic', 2)
+# review4 = ReviewModel('I hated it even more', 2)
 
 
-HOST = '127.0.0.1'
-DATABASE = 'bookreactions'
-DB_PORT = 5433
-USER = 'postgres'
-PASSWORD = 'tawanda'
+HOST = os.environ.get("HOST")
+DATABASE = os.environ.get("DATABASE")
+DB_PORT = os.environ.get("DB_PORT")
+USER = os.environ.get("USER")
+PASSWORD = os.environ.get("PASSWORD")
+
 
 
 
