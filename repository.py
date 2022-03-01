@@ -26,6 +26,17 @@ class Repository():
 
 
     def get_db(self):
+        try:
+            psycopg2.connect(
+                host=HOST,
+                database=DATABASE,
+                port=DB_PORT,
+                user=USER,
+                password=PASSWORD
+            )
+        except Exception as error:
+            print(error)
+
         return psycopg2.connect(
         host=HOST,
         database=DATABASE,
@@ -40,7 +51,7 @@ class Repository():
             conn = self.get_db()
             if (conn):
                 ps_cursor = conn.cursor()
-                ps_cursor = conn.execute("select title, author, bookId, cover from book order by title")
+                ps_cursor.execute("select title, author, bookId, cover from book order by title")
                 book_records = ps_cursor.fetchall()
                 book_list = []
                 for row in book_records:

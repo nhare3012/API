@@ -15,7 +15,7 @@
                 "FLASK_ENV": "development",
                 "HOST": "127.0.0.1", 
                 "DATABASE": "bookreactions", 
-                "DB_PORT": "5432",
+                "DB_PORT": "5433",
                 "USER": "postgres",
                 "PASSWORD": "tawanda",
                 "BASE_URL": "/api/bookreactions"
