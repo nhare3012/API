@@ -1,3 +1,4 @@
+from ast import Try
 from models import BookModel, ReviewModel
 import psycopg2
 import os
@@ -90,15 +91,39 @@ class Repository():
             if conn is not None:
                 conn.close()
 
+    
+
     def reviews_get_by_book_id(self, book_id):
-        reviews = [review1,review2,review3,review4]
-        return [x for x in reviews if x.bookId == book_id]
+        conn = None
+        try:
+            conn = self.get_db()
+            if (conn):
+                ps_cursor = conn.cursor()
+                ps_cursor.execute("select content ,bookId, id from review where bookId = %s", [book_id])
+                conn.commit()
+                row = ps_cursor.fetchone()
+                review =ReviewModel(row[0], row[1], row[2], row[3])
+                ps_cursor.close()
+            return review
+        except Exception as error:
+            print(error)
+        finally:
+            if conn is not None:
+                conn.close()
 
-    def review_add(self, data):
-        return ReviewModel(data['content'], data['bookId'], 1)
 
-    def book_add(self, data):
-        return BookModel(data['title'], data['cover'], 3,data['author'])
+      
+
+    # def review_add(self, data):
+    #     conn = None
+    #     try:
+    #         conn = self.get_db()
+    #         if (conn):
+    #             ps_cursor = conn.cursor()
+    #             ps_cursor.execute("")
+        # return ReviewModel(data['content'], data['bookId'], 1)
+
+   
 
    
 

@@ -8,11 +8,10 @@ repository = Repository()
 
 
 class BookList(Resource):
-    def __init__(self, repo=Repository):
+    def __init__(self, repo=repository):
         self.repo = repo
 
-    def get(self):
-        return [book.__dict__ for book in self.repo.books_get_all()]  
+    
 
     def post(self,req=request):
         data = request.get_json()
@@ -20,13 +19,13 @@ class BookList(Resource):
         return self.repo.book_add(data).__dict__
                   
 class Book(Resource):
-    def __init__(self, repo=Repository):
+    def __init__(self, repo=repository):
             self.repo = repo
     def get(self, book_id):
       return self.repo.book_get_by_id(init(book_id)).__dict__
 
 class ReviewList(Resource):
-    def __init__(self, repo=Repository):
+    def __init__(self, repo=repository):
             self.repo = repo
 
     def get(self, book_id):
