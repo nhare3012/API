@@ -39,7 +39,8 @@ class Repository():
         try:
             conn = self.get_db()
             if (conn):
-                ps_cursor = conn.cursor("select title, author, bookId, cover from book order by title")
+                ps_cursor = conn.cursor()
+                ps_cursor = conn.execute("select title, author, bookId, cover from book order by title")
                 book_records = ps_cursor.fetchall()
                 book_list = []
                 for row in book_records:
