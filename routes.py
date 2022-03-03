@@ -18,8 +18,8 @@ class BookList(Resource):
 
     
     def post(self,req=request):
-        data = request.get_json()
-        # data = req.get_json()
+        # data = request.get_json()
+        data = req.get_json()
         return self.repo.book_add(data).__dict__
                   
 class Book(Resource):
